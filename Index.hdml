@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieHub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0b0b0f;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 20px;
+      background: #111118;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .logo span {
+      color: #e50914;
+    }
+
+    .search {
+      width: 100%;
+      padding: 13px 15px;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      background: #22222b;
+      color: white;
+      font-size: 15px;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: 21px;
+    }
+
+    .movies {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .movie {
+      background: #15151c;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+
+    .movie:hover {
+      transform: translateY(-4px);
+    }
+
+    .movie img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info {
+      padding: 12px;
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight
