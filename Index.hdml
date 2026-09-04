@@ -1,89 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MovieHub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<title>Movies Website</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#080808;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+  background:#111;
+  padding:16px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:1px solid #222;
+}
+
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#e50914;
+}
+
+.search{
+  width:100%;
+  max-width:330px;
+  background:#222;
+  border:1px solid #333;
+  color:#fff;
+  padding:11px 14px;
+  border-radius:7px;
+  outline:none;
+}
+
+nav{
+  display:flex;
+  gap:18px;
+  margin-top:15px;
+  overflow-x:auto;
+}
+
+nav a{
+  color:#bbb;
+  text-decoration:none;
+  white-space:nowrap;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#fff;
+}
+
+.hero{
+  min-height:390px;
+  padding:35px 20px;
+  display:flex;
+  align-items:flex-end;
+  background:
+    linear-gradient(to top,#080808 5%,transparent 80%),
+    linear-gradient(to right,#080808 5%,transparent 70%),
+    url("https://image.tmdb.org/t/p/original/8ZbyKc1h5tJYfQ2VhJxK7L3Y8zE.jpg");
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-content{
+  max-width:600px;
+}
+
+.hero h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#ccc;
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.btn{
+  display:inline-block;
+  background:#e50914;
+  color:#fff;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:6px;
+  font-weight:bold;
+}
+
+.container{
+  padding:25px 18px;
+}
+
+.section-title{
+  font-size:22px;
+  margin-bottom:18px;
+}
+
+.movies{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.movie{
+  background:#141414;
+  border-radius:8px;
+  overflow:hidden;
+  transition:.2s;
+}
+
+.movie:hover{
+  transform:translateY(-4px);
+}
+
+.poster{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  display:block;
+}
+
+.info{
+  padding:12px;
+}
+
+.title{
+  font-weight:bold;
+  font-size:15px;
+  margin-bottom:7px;
+}
+
+.meta{
+  color:#999;
+  font-size:13px;
+}
+
+.rating{
+  color:#ffc107;
+  margin-top:7px;
+  font-size:13px;
+}
+
+footer{
+  text-align:center;
+  color:#666;
+  padding:35px 15px;
+  border-top:1px solid #222;
+  margin-top:20px;
+}
+
+@media(min-width:700px){
+  .movies{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .poster{
+    height:310px;
+  }
+
+  .hero{
+    min-height:500px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="top">
+    <div class="logo">
+      MOVIES<span>WEB</span>
+    </div>
+
+    <input
+      class="search"
+      id="search"
+      type="text"
+      placeholder="Search movies..."
+      onkeyup="searchMovies()"
+    >
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Popular</a>
+    <a href="#">Action</a>
+    <a href="#">Comedy</a>
+    <a href="#">Drama</a>
+    <a href="#">Horror</a>
+    <a href="#">Animation</a>
+  </nav>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>Discover Great Movies</h1>
+
+    <p>
+      Explore movies, ratings, genres and information
+      about your favourite films.
+    </p>
+
+    <a class="btn" href="#movies">
+      Explore Movies
+    </a>
+
+  </div>
+
+</section>
+
+
+<main class="container">
+
+  <h2 class="section-title">🔥 Popular Movies</h2>
+
+  <div class="movies" id="movies">
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg">
+
+      <div class="info">
+        <div class="title">The Shawshank Redemption</div>
+        <div class="meta">1994 • Drama</div>
+        <div class="rating">⭐ 8.7</div>
+      </div>
+    </div>
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/1hRoyzDtpgMU7Dz4JF22RANzQO7.jpg">
+
+      <div class="info">
+        <div class="title">The Dark Knight</div>
+        <div class="meta">2008 • Action</div>
+        <div class="rating">⭐ 9.0</div>
+      </div>
+    </div>
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg">
+
+      <div class="info">
+        <div class="title">Inception</div>
+        <div class="meta">2010 • Sci-Fi</div>
+        <div class="rating">⭐ 8.8</div>
+      </div>
+    </div>
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg">
+
+      <div class="info">
+        <div class="title">Interstellar</div>
+        <div class="meta">2014 • Sci-Fi</div>
+        <div class="rating">⭐ 8.7</div>
+      </div>
+    </div>
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg">
+
+      <div class="info">
+        <div class="title">Parasite</div>
+        <div class="meta">2019 • Thriller</div>
+        <div class="rating">⭐ 8.5</div>
+      </div>
+    </div>
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/lyQBXzOQTgLjE4rB7Z8a5yqVn8Y.jpg">
+
+      <div class="info">
+        <div class="title">The Matrix</div>
+        <div class="meta">1999 • Sci-Fi</div>
+        <div class="rating">⭐ 8.7</div>
+      </div>
+    </div>
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg">
+
+      <div class="info">
+        <div class="title">Wonder Woman</div>
+        <div class="meta">2017 • Action</div>
+        <div class="rating">⭐ 7.4</div>
+      </div>
+    </div>
+
+
+    <div class="movie">
+      <img class="poster"
+      src="https://image.tmdb.org/t/p/w500/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg">
+
+      <div class="info">
+        <div class="title">Fight Club</div>
+        <div class="meta">1999 • Drama</div>
+        <div class="rating">⭐ 8.8</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 MoviesWeb • Movie Discovery Website
+</footer>
+
+
+<script>
+
+function searchMovies(){
+
+  let input =
+    document.getElementById("search")
+    .value
+    .toLowerCase();
+
+  let movies =
+    document.querySelectorAll(".movie");
+
+  movies.forEach(function(movie){
+
+    let title =
+      movie.querySelector(".title")
+      .innerText
+      .toLowerCase();
+
+    if(title.includes(input)){
+      movie.style.display="block";
+    }
+    else{
+      movie.style.display="none";
     }
 
-    body {
-      background: #0b0b0f;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+  });
 
-    header {
-      padding: 20px;
-      background: #111118;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+</script>
 
-    .logo span {
-      color: #e50914;
-    }
-
-    .search {
-      width: 100%;
-      padding: 13px 15px;
-      border: none;
-      outline: none;
-      border-radius: 8px;
-      background: #22222b;
-      color: white;
-      font-size: 15px;
-    }
-
-    .container {
-      padding: 20px;
-    }
-
-    h2 {
-      margin-bottom: 18px;
-      font-size: 21px;
-    }
-
-    .movies {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .movie {
-      background: #15151c;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: 0.2s;
-    }
-
-    .movie:hover {
-      transform: translateY(-4px);
-    }
-
-    .movie img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .info {
-      padding: 12px;
-    }
-
-    .title {
-      font-size: 15px;
-      font-weight
+</body>
+</html>
